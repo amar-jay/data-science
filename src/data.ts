@@ -10,7 +10,7 @@ import {
   Intrests,
   friendship_pairs,
 } from "./consts";
-import { Print } from "./commonFunc";
+import { DefaultDict, Print } from "./commonFunc";
 const numOfUsers = users.length + 0.0;
 
 /**
@@ -94,5 +94,22 @@ function friendsOfFriends(user: User): FoaF {
 function usersWhoLike(intrest: IntrestsTypes) {
   return Intrests.filter((pair) => pair[1] === intrest).map((pair) => pair[0]);
 }
+Print("Users who like machine learning", usersWhoLike("Java"));
 
-// Print("Users who like machine learning", usersWhoLike("Java"));
+/**
+ * Using DefaultDict to generate for all
+ */
+function usersWhoLike_Dict() {
+  let dict = new DefaultDict(Set);
+  Intrests.forEach((intrest) => {
+    Intrests.filter((pair) => pair[1] === intrest[1]).forEach((pair) => {
+      dict[pair[1]].add(pair[0]);
+      // resolve the type error
+    });
+  });
+
+  return dict;
+}
+class g {}
+
+Print("Sort of users by likes", usersWhoLike_Dict());

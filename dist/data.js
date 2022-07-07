@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const lodash_1 = __importDefault(require("lodash"));
 const consts_1 = require("./consts");
+const commonFunc_1 = require("./commonFunc");
 const numOfUsers = consts_1.users.length + 0.0;
 /**
  *List all friendships based on indexes
@@ -73,4 +74,20 @@ function friendsOfFriends(user) {
 function usersWhoLike(intrest) {
     return consts_1.Intrests.filter((pair) => pair[1] === intrest).map((pair) => pair[0]);
 }
-// Print("Users who like machine learning", usersWhoLike("Java"));
+(0, commonFunc_1.Print)("Users who like machine learning", usersWhoLike("Java"));
+/**
+ * Using DefaultDict to generate for all
+ */
+function usersWhoLike_Dict() {
+    let dict = new commonFunc_1.DefaultDict(Set);
+    consts_1.Intrests.forEach((intrest) => {
+        consts_1.Intrests.filter((pair) => pair[1] === intrest[1]).forEach((pair) => {
+            dict[pair[1]].add(pair[0]);
+            // resolve the type error
+        });
+    });
+    return dict;
+}
+class g {
+}
+(0, commonFunc_1.Print)("Sort of users by likes", usersWhoLike_Dict());
