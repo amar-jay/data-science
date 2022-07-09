@@ -4,8 +4,8 @@ import { IntrestsTypes } from "./consts";
  * Print the Fucking Shit Out
  */
 export function Print(func: string, whatever: unknown): void {
-  console.log(func);
-  console.log(whatever);
+	console.log(func);
+	console.log(whatever);
 }
 
 // export function defaultDict(x: T) {
@@ -22,15 +22,11 @@ export class DefaultDict<
     | SetConstructor
     | (new () => IntrestsTypes)
 > {
-  constructor(defaultInit: any) {
-    return new Proxy<T>({} as T, {
-      get: (target: { [name: string | symbol]: any }, name) =>
-        name in target
-          ? target[name]
-          : (target[name] =
-              typeof defaultInit === "function"
-                ? new defaultInit().valueOf()
-                : defaultInit),
-    });
-  }
+	constructor(defaultInit: any) {
+		return new Proxy<T>({} as T, {
+			get: (target: { [name: string | symbol]: any }, name) =>
+				name in target? target[name]: (target[name] =
+              typeof defaultInit === "function"? new defaultInit().valueOf(): defaultInit),
+		});
+	}
 }
