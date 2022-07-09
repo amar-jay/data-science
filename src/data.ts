@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import ld from "lodash";
 import {
   User,
@@ -13,7 +14,6 @@ import {
   DictOf,
 } from "./consts";
 import { DefaultDict, Print, tenureBucket } from "./commonFunc";
-import * as asciichart from "asciichart";
 const numOfUsers = users.length + 0.0;
 
 /**
@@ -34,7 +34,7 @@ friendship_pairs.forEach((couple) => {
  * get total number of friends of user
  */
 function num_of_friends(user: User) {
-  let friend_ids = friendships[user.id];
+  const friend_ids = friendships[user.id];
   return friend_ids.length;
 }
 

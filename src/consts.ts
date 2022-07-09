@@ -1,5 +1,8 @@
-<<<<<<< Updated upstream
 import { tenureBucket } from "./commonFunc";
+
+
+
+
 
 type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyArray<
   infer ElementType
@@ -7,16 +10,13 @@ type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyArray<
   ? Readonly<ElementType>
   : never;
 
-<<<<<<< Updated upstream
 export type DictOf<
   T extends typeof tenureBucket,
   KeyType extends number | number[]
-> = T extends ReturnType<infer _> | KeyType
+> = T extends unknown | KeyType
   ? { [k in ReturnType<typeof tenureBucket>]: KeyType }
   : never;
 
-=======
->>>>>>> Stashed changes
 type UserList = (
   | "Thor"
   | "Clive"
@@ -130,11 +130,7 @@ export const Intrests = [
   [9, "Java"],
   [9, "MapReduce"],
   [9, "Big Data"],
-<<<<<<< Updated upstream
 ] as const;
-=======
-];
->>>>>>> Stashed changes
 
 /**
  * All intrests by users
@@ -162,11 +158,7 @@ export const friendship_pairs = [
   [11, 3],
 ];
 
-<<<<<<< Updated upstream
 export const salaries_and_tenures = [
-=======
-const salaries_and_tenures = [
->>>>>>> Stashed changes
   [83000, 8.7],
   [88000, 8.1],
   [48000, 0.7],
@@ -177,8 +169,4 @@ const salaries_and_tenures = [
   [83000, 10],
   [48000, 1.9],
   [63000, 4.2],
-<<<<<<< Updated upstream
 ] as const;
-=======
-];
->>>>>>> Stashed changes

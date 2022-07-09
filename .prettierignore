@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
 node_modules/
 build/
 dist/
-=======
-dist
-node_modules
->>>>>>> Stashed changes

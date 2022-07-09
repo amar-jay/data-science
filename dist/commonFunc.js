@@ -58,9 +58,12 @@ exports.DefaultDict = DefaultDict;
  * @param display to display array data
  */
 function Plot(name, data, display) {
-    let salaries_and_tenures = data;
-    const [, max] = lodash_1.default.maxBy(salaries_and_tenures, ([_, tenure]) => tenure);
-    const [, min] = [0, 0] || lodash_1.default.minBy(salaries_and_tenures, ([_, tenure]) => tenure);
+    const salaries_and_tenures = data;
+    const [, max] = lodash_1.default.maxBy(salaries_and_tenures, ([, tenure]) => tenure) || [
+        0, 0,
+    ];
+    const [, min] = [0, 0] ||
+        lodash_1.default.minBy(salaries_and_tenures, ([, tenure]) => tenure) || [0, 0];
     const len = Math.ceil((max - min) * 10);
     const arr = new Array(len).fill(0);
     salaries_and_tenures.forEach(([salary, tenure]) => (arr[(tenure - min) * 10] = salary / 10000));

@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const lodash_1 = __importDefault(require("lodash"));
 const consts_1 = require("./consts");
 const commonFunc_1 = require("./commonFunc");
@@ -23,7 +24,7 @@ consts_1.friendship_pairs.forEach((couple) => {
  * get total number of friends of user
  */
 function num_of_friends(user) {
-    let friend_ids = friendships[user.id];
+    const friend_ids = friendships[user.id];
     return friend_ids.length;
 }
 /**

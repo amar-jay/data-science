@@ -46,10 +46,12 @@ export function Plot(
   data: [number, number][],
   display?: boolean
 ) {
-  let salaries_and_tenures = data;
-  const [, max] = ld.maxBy(salaries_and_tenures, ([_, tenure]) => tenure)!;
-  const [, min] =
-    [0, 0] || ld.minBy(salaries_and_tenures, ([_, tenure]) => tenure)!;
+  const salaries_and_tenures = data;
+  const [, max] = ld.maxBy(salaries_and_tenures, ([, tenure]) => tenure) || [
+    0, 0,
+  ];
+  const [, min] = [0, 0] ||
+    ld.minBy(salaries_and_tenures, ([, tenure]) => tenure) || [0, 0];
   const len = Math.ceil((max - min) * 10);
   const arr = new Array(len).fill(0);
   salaries_and_tenures.forEach(
