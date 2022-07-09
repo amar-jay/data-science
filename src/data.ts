@@ -33,23 +33,23 @@ friendship_pairs.forEach((couple) => {
 /**
  * get total number of friends of user
  */
-function numldofldfriends(user: User) {
-  const friendldids = friendships[user.id];
-  return friendldids.length;
+function num_of_friends(user: User) {
+  let friend_ids = friendships[user.id];
+  return friend_ids.length;
 }
 
 /**
  * total relationships overall
  */
-let totalldconnections = 0;
+let total_connections = 0;
 users.map((user) => {
-  totalldconnections += numldofldfriends(user);
+  total_connections += num_of_friends(user);
 });
 
 /**
  *Find average connection per user
  */
-const avgldconnections = totalldconnections / numOfUsers;
+const avgldconnections = total_connections / numOfUsers;
 
 // Print("Average Relationship", avgldconnections);
 
@@ -181,3 +181,4 @@ salaries_and_tenures.forEach(([salary, tenure]) => {
 );
 
 Print("Average Salary Bucket", averageSalaryByBucket_DICT);
+

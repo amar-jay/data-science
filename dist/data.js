@@ -22,21 +22,21 @@ consts_1.friendship_pairs.forEach((couple) => {
 /**
  * get total number of friends of user
  */
-function numldofldfriends(user) {
-    const friendldids = friendships[user.id];
-    return friendldids.length;
+function num_of_friends(user) {
+    let friend_ids = friendships[user.id];
+    return friend_ids.length;
 }
 /**
  * total relationships overall
  */
-let totalldconnections = 0;
+let total_connections = 0;
 consts_1.users.map((user) => {
-    totalldconnections += numldofldfriends(user);
+    total_connections += num_of_friends(user);
 });
 /**
  *Find average connection per user
  */
-const avgldconnections = totalldconnections / numOfUsers;
+const avgldconnections = total_connections / numOfUsers;
 // Print("Average Relationship", avgldconnections);
 Object.keys(friendships).forEach((id) => consts_1.friendshipLenById.push([Number(id), friendships[Number(id)].length]));
 /*
