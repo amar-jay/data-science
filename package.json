@@ -40,7 +40,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*": [
+    "./src/**/*": [
       "npm run test",
       "npm run prettify"
     ]
