@@ -42,8 +42,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "npx mocha",
-      "npm run lint",
+      "npm run test",
       "npm run prettify"
     ]
   }
