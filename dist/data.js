@@ -122,3 +122,20 @@ function mostLikedIntrest(user) {
 const salaries_tenures_DICT = consts_1.salaries_and_tenures.map(([salary, tenure]) => {
     return { salary, tenure };
 });
+const _averageSalaryByBucket = {
+    "tenure is less than 2": [],
+    "between 2 and 5": [],
+    "between 5 and 10": [],
+    "tenure is greater than 10": [],
+};
+const averageSalaryByBucket_DICT = {
+    "between 2 and 5": 0,
+    "between 5 and 10": 0,
+    "tenure is greater than 10": 0,
+    "tenure is less than 2": 0,
+};
+consts_1.salaries_and_tenures.forEach(([salary, tenure]) => {
+    _averageSalaryByBucket[(0, commonFunc_1.tenureBucket)(tenure)].push(salary);
+});
+Object.keys(_averageSalaryByBucket).forEach((label) => (averageSalaryByBucket_DICT[label] = lodash_1.default.mean(_averageSalaryByBucket[label])));
+(0, commonFunc_1.Print)("Average Salary Bucket", averageSalaryByBucket_DICT);

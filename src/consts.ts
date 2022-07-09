@@ -1,7 +1,16 @@
+import { tenureBucket } from "./commonFunc";
+
 type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyArray<
   infer ElementType
 >
   ? Readonly<ElementType>
+  : never;
+
+export type DictOf<
+  T extends typeof tenureBucket,
+  KeyType extends number | number[]
+> = T extends ReturnType<infer _> | KeyType
+  ? { [k in ReturnType<typeof tenureBucket>]: KeyType }
   : never;
 
 type UserList = (

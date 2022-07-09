@@ -10,8 +10,9 @@ import {
   Intrests,
   friendship_pairs,
   salaries_and_tenures,
+  DictOf,
 } from "./consts";
-import { DefaultDict, Print } from "./commonFunc";
+import { DefaultDict, Print, tenureBucket } from "./commonFunc";
 import * as asciichart from "asciichart";
 const numOfUsers = users.length + 0.0;
 
@@ -155,3 +156,28 @@ function mostLikedIntrest(user: User) {
 const salaries_tenures_DICT = salaries_and_tenures.map(([salary, tenure]) => {
   return { salary, tenure };
 });
+
+const _averageSalaryByBucket: DictOf<typeof tenureBucket, number[]> = {
+  "tenure is less than 2": [],
+  "between 2 and 5": [],
+  "between 5 and 10": [],
+  "tenure is greater than 10": [],
+};
+const averageSalaryByBucket_DICT: DictOf<typeof tenureBucket, number> = {
+  "between 2 and 5": 0,
+  "between 5 and 10": 0,
+  "tenure is greater than 10": 0,
+  "tenure is less than 2": 0,
+};
+salaries_and_tenures.forEach(([salary, tenure]) => {
+  _averageSalaryByBucket[tenureBucket(tenure)].push(salary);
+});
+
+(
+  Object.keys(_averageSalaryByBucket) as [keyof typeof _averageSalaryByBucket]
+).forEach(
+  (label) =>
+    (averageSalaryByBucket_DICT[label] = ld.mean(_averageSalaryByBucket[label]))
+);
+
+Print("Average Salary Bucket", averageSalaryByBucket_DICT);
