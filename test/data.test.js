@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const expect = require('chai').expect
 
 describe('Life on Earth', function() {
