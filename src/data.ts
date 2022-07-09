@@ -49,7 +49,7 @@ users.map((user) => {
 /**
  *Find average connection per user
  */
-const avgldconnections = total_connections / numOfUsers;
+const avg_connections = total_connections / numOfUsers;
 
 // Print("Average Relationship", avgldconnections);
 
