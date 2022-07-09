@@ -33,12 +33,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pretest"
+      "pre-commit": "npx lint-staged"
     }
   },
   "lint-staged": {
     "*.ts": [
-      "./node_modules/.bin/eslint —-fix"
+      "./node_modules/.bin/eslint —-fix",
+      "./node_modules/.bin/prettier --write"
     ]
   }
 }
