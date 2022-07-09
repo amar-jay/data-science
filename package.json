@@ -7,7 +7,9 @@
     "dev": "nodemon dist/data.js",
     "test": "npx lint-staged",
     "prepare": "husky install",
-    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix"
+    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix",
+    "prettify": "./node_modules/.bin/prettier --write .",
+    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix"
   },
   "keywords": [],
   "author": "",
@@ -38,8 +40,8 @@
   },
   "lint-staged": {
     "*.ts": [
-      "./node_modules/.bin/eslint —-fix",
-      "./node_modules/.bin/prettier --write"
+      "npm run lint",
+      "npm run prettify"
     ]
   }
 }

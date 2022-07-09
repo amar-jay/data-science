@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>foobar</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
-<body>
+  <head>
+    <title>foobar</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
+  </head>
+  <body>
     <h4>Foobar</h4>
     <h1>Hello</h1>
     <h1>World</h1>
@@ -14,119 +15,129 @@
     <p>Bar</p>
     <p>Baz</p>
     <div id="simple"></div>
-    <br/>
-    <hr/>
-    <input type="number" id="buttonXlim" value=9>
+    <br />
+    <hr />
+    <input type="number" id="buttonXlim" value="9" />
     <div id="my_dataviz"></div>
-<script>
- var paragraphs = document.getElementsByTagName("p");
- 
- 
-//  for (var i = 0; i < paragraphs.length; i++) {
-//   var paragraph = paragraphs.item(i);
-//   paragraph.style.setProperty("color", "blue", null);
-// }   
-d3.selectAll("h1").style("color", "#f0f");
-d3.select("body").style("background-color", "#fff");
-// d3.selectAll("p").style("color", function(d, i) {
-//   return i % 2 ? "#fff" : "#0ff";
-// });
-const e = d3.select("body")
-  .selectAll("p")
-  .data([4, 8, 15, 16, 23, 42, 88])
-  .style("color", function(_,i) { return i % 10 ? "#0ff" : "#0f0"; })
-  .enter().append("h4")
-    .text(function(d) { return "I’m the number " + d + "!"; })
-    .style("color", function(d) { return d > 20 ? "#0ff" : "#0f0"; });
+    <script>
+      var paragraphs = document.getElementsByTagName("p");
 
-e.exit().remove();
+      //  for (var i = 0; i < paragraphs.length; i++) {
+      //   var paragraph = paragraphs.item(i);
+      //   paragraph.style.setProperty("color", "blue", null);
+      // }
+      d3.selectAll("h1").style("color", "#f0f");
+      d3.select("body").style("background-color", "#fff");
+      // d3.selectAll("p").style("color", function(d, i) {
+      //   return i % 2 ? "#fff" : "#0ff";
+      // });
+      const e = d3
+        .select("body")
+        .selectAll("p")
+        .data([4, 8, 15, 16, 23, 42, 88])
+        .style("color", function (_, i) {
+          return i % 10 ? "#0ff" : "#0f0";
+        })
+        .enter()
+        .append("h4")
+        .text(function (d) {
+          return "I’m the number " + d + "!";
+        })
+        .style("color", function (d) {
+          return d > 20 ? "#0ff" : "#0f0";
+        });
 
-//-----------------------------------------------------
-        var width = 400, height = 100;
-        var svg = d3.select("body")
+      e.exit().remove();
+
+      //-----------------------------------------------------
+      var width = 400,
+        height = 100;
+      var svg = d3
+        .select("body")
         .append("svg")
         .style("background-color", "#ddd")
         .attr("width", width)
         .attr("height", height);
-  
-        var xscale = d3.scaleLinear()
-            .domain([0, 100])
-            .range([0, width - 50]);
-  
-        var x_axis = d3.axisBottom(xscale);
-  
-        svg.append("g")
-            .attr("transform", "translate(20,50)")
-            .call(x_axis)
 
-    //-----------------------------------------------------
+      var xscale = d3
+        .scaleLinear()
+        .domain([0, 100])
+        .range([0, width - 50]);
 
-// set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+      var x_axis = d3.axisBottom(xscale);
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+      svg.append("g").attr("transform", "translate(20,50)").call(x_axis);
 
-d3.data("./data.csv", function(data) {
+      //-----------------------------------------------------
 
-  // Add X axis
-  var x = d3.scaleLinear()
-    .domain([3, 9])
-    .range([ 0, width ]);
-  var xAxis = svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+      // set the dimensions and margins of the graph
+      var margin = { top: 10, right: 30, bottom: 30, left: 60 },
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
-  // Add Y axis
-  var y = d3.scaleLinear()
-    .domain([0, 9])
-    .range([ height, 0]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
+      // append the svg object to the body of the page
+      var svg = d3
+        .select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // Add dots
-  svg.append('g')
-    .selectAll("dot")
-    .data(data)
-    .enter()
-    .append("circle")
-      .attr("cx", function (d) { return x(d.Sepal_Length); } )
-      .attr("cy", function (d) { return y(d.Petal_Length); } )
-      .attr("r", 5)
-      .style("fill", "#69b3a2" )
+      d3.data("./data.csv", function (data) {
+        // Add X axis
+        var x = d3.scaleLinear().domain([3, 9]).range([0, width]);
+        var xAxis = svg
+          .append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x));
 
+        // Add Y axis
+        var y = d3.scaleLinear().domain([0, 9]).range([height, 0]);
+        svg.append("g").call(d3.axisLeft(y));
 
-  // A function that update the plot for a given xlim value
-  function updatePlot() {
+        // Add dots
+        svg
+          .append("g")
+          .selectAll("dot")
+          .data(data)
+          .enter()
+          .append("circle")
+          .attr("cx", function (d) {
+            return x(d.Sepal_Length);
+          })
+          .attr("cy", function (d) {
+            return y(d.Petal_Length);
+          })
+          .attr("r", 5)
+          .style("fill", "#69b3a2");
 
-    // Get the value of the button
-    xlim = this.value
+        // A function that update the plot for a given xlim value
+        function updatePlot() {
+          // Get the value of the button
+          xlim = this.value;
 
-    // Update X axis
-    x.domain([3,xlim])
-    xAxis.transition().duration(1000).call(d3.axisBottom(x))
+          // Update X axis
+          x.domain([3, xlim]);
+          xAxis.transition().duration(1000).call(d3.axisBottom(x));
 
-    // Update chart
-    svg.selectAll("circle")
-       .data(data)
-       .transition()
-       .duration(1000)
-       .attr("cx", function (d) { return x(d.Sepal_Length); } )
-       .attr("cy", function (d) { return y(d.Petal_Length); } )
-  }
+          // Update chart
+          svg
+            .selectAll("circle")
+            .data(data)
+            .transition()
+            .duration(1000)
+            .attr("cx", function (d) {
+              return x(d.Sepal_Length);
+            })
+            .attr("cy", function (d) {
+              return y(d.Petal_Length);
+            });
+        }
 
-  // Add an event listener to the button created in the html part
-  d3.select("#buttonXlim").on("input", updatePlot )
-
-})
-</script>
-</body>
+        // Add an event listener to the button created in the html part
+        d3.select("#buttonXlim").on("input", updatePlot);
+      });
+    </script>
+  </body>
 </html>

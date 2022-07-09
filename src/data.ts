@@ -181,4 +181,3 @@ salaries_and_tenures.forEach(([salary, tenure]) => {
 );
 
 Print("Average Salary Bucket", averageSalaryByBucket_DICT);
-
