@@ -1,8 +1,6 @@
 <<<<<<< Updated upstream
 import { tenureBucket } from "./commonFunc";
 
-=======
->>>>>>> Stashed changes
 type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyArray<
   infer ElementType
 >
