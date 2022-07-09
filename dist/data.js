@@ -22,22 +22,22 @@ consts_1.friendship_pairs.forEach((couple) => {
 /**
  * get total number of friends of user
  */
-function num_of_friends(user) {
-    let friend_ids = friendships[user.id];
-    return friend_ids.length;
+function numldofldfriends(user) {
+    const friendldids = friendships[user.id];
+    return friendldids.length;
 }
 /**
  * total relationships overall
  */
-let total_connections = 0;
+let totalldconnections = 0;
 consts_1.users.map((user) => {
-    total_connections += num_of_friends(user);
+    totalldconnections += numldofldfriends(user);
 });
 /**
  *Find average connection per user
  */
-const avg_connections = total_connections / numOfUsers;
-// Print("Average Relationship", avg_connections);
+const avgldconnections = totalldconnections / numOfUsers;
+// Print("Average Relationship", avgldconnections);
 Object.keys(friendships).forEach((id) => consts_1.friendshipLenById.push([Number(id), friendships[Number(id)].length]));
 /*
 Sort FriendshipLenById by num of friends
@@ -57,8 +57,8 @@ degree centrality
  * Find Friends of friends by the User
  */
 function friendsOfFriends(user) {
-    let foaf = [];
-    let friends = friendships[user.id];
+    const foaf = [];
+    const friends = friendships[user.id];
     friends.forEach((friend) => foaf.push(...friendships[friend]));
     return {
         friends: friends,
@@ -74,20 +74,51 @@ function friendsOfFriends(user) {
 function usersWhoLike(intrest) {
     return consts_1.Intrests.filter((pair) => pair[1] === intrest).map((pair) => pair[0]);
 }
-(0, commonFunc_1.Print)("Users who like machine learning", usersWhoLike("Java"));
+// Print("Users who like machine learning", usersWhoLike("Java"));
 /**
- * Using DefaultDict to generate for all
+ * sort users by intrests
  */
-function usersWhoLike_Dict() {
-    let dict = new commonFunc_1.DefaultDict(Set);
+function usersWhoLikeldDict() {
+    const dict = new commonFunc_1.DefaultDict(Set);
     consts_1.Intrests.forEach((intrest) => {
         consts_1.Intrests.filter((pair) => pair[1] === intrest[1]).forEach((pair) => {
             dict[pair[1]].add(pair[0]);
-            // resolve the type error
+            //TODO: resolve the type error
         });
     });
     return dict;
 }
-class g {
+// Print("Sort of users by likes", usersWhoLikeldDict());
+/**
+ *  A dict containg Users by intrests
+ */
+function usersByIntrests() {
+    const dic = {};
+    consts_1.users.forEach((user) => {
+        dic[user.id] = [];
+    });
+    consts_1.Intrests.forEach((intrest) => {
+        dic[intrest[0]].push(intrest[1]);
+    });
+    return dic;
 }
-(0, commonFunc_1.Print)("Sort of users by likes", usersWhoLike_Dict());
+// Print("Users and thier intrests", ld.countBy(usersByIntrests()[3]));
+// Keep count of how many times we see each other user.
+/**
+ * find the number 1 intrest of the set user
+ * @param user User to find friends of
+ *
+ */
+function mostLikedIntrest(user) {
+    const intrestDict = usersByIntrests();
+    const intrests = intrestDict[user.id];
+    const intrestCount = lodash_1.default.countBy(intrests);
+    const max = lodash_1.default.maxBy(Object.keys(intrestCount), (key) => intrestCount[key]);
+    return max;
+}
+// Print("Most liked intrest", mostLikedIntrest(users[3]));
+// console.log(salaries_and_tenures)
+// Plot("Salaries by Tenure Graph", salaries_and_tenures, false);
+const salaries_tenures_DICT = consts_1.salaries_and_tenures.map(([salary, tenure]) => {
+    return { salary, tenure };
+});

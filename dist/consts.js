@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.friendship_pairs = exports.Intrests = exports.users = exports.friendshipLenById = void 0;
+exports.salaries_and_tenures = exports.friendship_pairs = exports.Intrests = exports.users = exports.friendshipLenById = void 0;
 //CONSTANTS
 /**
  * A list of number of friends by id [user_id, number_of_friends]
@@ -98,7 +98,7 @@ exports.friendship_pairs = [
     [10, 11],
     [11, 3],
 ];
-const salaries_and_tenures = [
+exports.salaries_and_tenures = [
     [83000, 8.7],
     [88000, 8.1],
     [48000, 0.7],
