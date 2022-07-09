@@ -8,7 +8,7 @@
     "test": "mocha",
     "prepare": "husky install",
     "pretest": "./node_modules/.bin/eslint --ignore-path .eslintignore . --fix",
-    "prettify": "./node_modules/.bin/prettier --write ."
+    "prettify": "./node_modules/.bin/prettier --write . --ignore-path .eslintignore "
   },
   "keywords": [],
   "author": "",
