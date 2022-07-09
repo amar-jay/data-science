@@ -36,7 +36,10 @@
       "pre-commit": "npm run pretest"
     }
   },
-    "lint-staged": {
-    "*.ts": ["./node_modules/.bin/eslint — fix", "git add"]
+  "lint-staged": {
+    "*.ts": [
+      "./node_modules/.bin/eslint — fix",
+      "git add"
+    ]
   }
 }
