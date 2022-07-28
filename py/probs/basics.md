@@ -20,3 +20,8 @@ A probability measure is a function defined over the sets in a σ-algebra F such
 - A ⊆ B implies P (A) ≤ P (B)
 
 # Conditional Probability
+- A partition is a subspace where all events are mutually exclusive(disjoint) from each other. And Ω=union of all events 
+- **(Law of total probability)**. Let (Ω, F, P) be a probability space and let the collection of disjoint sets A1, A2,... ∈ F be any partition of Ω. For any set S ∈ F
+```
+    P(A) = P(AnBi for Bi in F)=  P(Bi for Bi in F).P(A|Bi for Bi in F)
+```
